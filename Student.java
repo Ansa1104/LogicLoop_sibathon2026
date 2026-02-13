@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.sql.*;
 
- class Student extends JFrame {
+class Student extends JFrame {
 
     JTextField nameField, rollField, deptField, semField, emailField, phoneField;
 
@@ -42,7 +42,7 @@ import java.sql.*;
         try {
             Connection con = DBConnection.getConnection();
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO students (name, roll_no, department, semester, email, phone) VALUES (?,?,?,?,?,?)"
+                "INSERT INTO students (name, roll_no, department, semester, email, phone) VALUES (?,?,?,?,?,?)"
             );
 
             ps.setString(1, nameField.getText());
@@ -56,10 +56,12 @@ import java.sql.*;
 
             JOptionPane.showMessageDialog(this, "Student Added Successfully!");
 
+            ps.close();
+            con.close();
+
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error Adding Student!");
             e.printStackTrace();
         }
     }
-} {
-    
 }
