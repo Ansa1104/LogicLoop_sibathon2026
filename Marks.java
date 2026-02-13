@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.sql.*;
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
  class Marks extends JFrame {
 
     JTextField studentIdField, subjectField, marksField, gradeField;
@@ -61,6 +64,11 @@ import java.sql.*;
             e.printStackTrace();
         }
     }
+<<<<<<< Updated upstream
 } {
     
 }
+=======
+}
+
+>>>>>>> Stashed changes
