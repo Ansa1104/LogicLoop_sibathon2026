@@ -1,66 +1,63 @@
 import javax.swing.*;
 import java.sql.*;
 
-class Student extends JFrame {
+public class Marks extends JFrame {
 
-    JTextField nameField, rollField, deptField, semField, emailField, phoneField;
+    JTextField studentIdField, subjectField, marksField, gradeField;
 
-    public Student() {
-        setTitle("Add Student");
-        setSize(400, 400);
+    public Marks() {
+
+        setTitle("Add Marks");
+        setSize(350, 320);
         setLayout(null);
 
-        nameField = createField("Name:", 20);
-        rollField = createField("Roll No:", 60);
-        deptField = createField("Department:", 100);
-        semField = createField("Semester:", 140);
-        emailField = createField("Email:", 180);
-        phoneField = createField("Phone:", 220);
+        studentIdField = createField("Student ID:", 40);
+        subjectField = createField("Subject:", 80);
+        marksField = createField("Marks:", 120);
+        gradeField = createField("Grade:", 160);
 
-        JButton addBtn = new JButton("Add Student");
-        addBtn.setBounds(120, 270, 150, 30);
+        JButton addBtn = new JButton("Add Marks");
+        addBtn.setBounds(90, 210, 150, 30);
         add(addBtn);
 
-        addBtn.addActionListener(e -> addStudent());
+        addBtn.addActionListener(e -> addMarks());
 
         setLocationRelativeTo(null);
         setVisible(true);
     }
 
     private JTextField createField(String label, int y) {
+
         JLabel l = new JLabel(label);
-        l.setBounds(20, y, 100, 25);
+        l.setBounds(20, y, 120, 25);
         add(l);
 
         JTextField tf = new JTextField();
-        tf.setBounds(130, y, 200, 25);
+        tf.setBounds(150, y, 150, 25);
         add(tf);
+
         return tf;
     }
 
-    private void addStudent() {
+    private void addMarks() {
+
         try {
             Connection con = DBConnection.getConnection();
+
             PreparedStatement ps = con.prepareStatement(
-                "INSERT INTO students (name, roll_no, department, semester, email, phone) VALUES (?,?,?,?,?,?)"
+                    "INSERT INTO marks (student_id, subject, marks_obtained, grade) VALUES (?,?,?,?)"
             );
 
-            ps.setString(1, nameField.getText());
-            ps.setString(2, rollField.getText());
-            ps.setString(3, deptField.getText());
-            ps.setInt(4, Integer.parseInt(semField.getText()));
-            ps.setString(5, emailField.getText());
-            ps.setString(6, phoneField.getText());
+            ps.setInt(1, Integer.parseInt(studentIdField.getText()));
+            ps.setString(2, subjectField.getText());
+            ps.setInt(3, Integer.parseInt(marksField.getText()));
+            ps.setString(4, gradeField.getText());
 
             ps.executeUpdate();
 
-            JOptionPane.showMessageDialog(this, "Student Added Successfully!");
-
-            ps.close();
-            con.close();
+            JOptionPane.showMessageDialog(this, "Marks Added!");
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error Adding Student!");
             e.printStackTrace();
         }
     }
