@@ -1,7 +1,7 @@
-public import javax.swing.*;
+import javax.swing.*;
 import java.sql.*;
 
-public class Student extends JFrame {
+ class Student extends JFrame {
 
     JTextField nameField, rollField, deptField, semField, emailField, phoneField;
 

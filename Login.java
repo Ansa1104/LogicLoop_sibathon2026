@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.sql.*;
 
-public class Login extends JFrame {
+ class Login extends JFrame {
 
     JTextField usernameField;
     JPasswordField passwordField;
