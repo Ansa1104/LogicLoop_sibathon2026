@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.sql.*;
 
-public class Marks extends JFrame {
+ class Marks extends JFrame {
 
     JTextField studentIdField, subjectField, marksField, gradeField;
 
