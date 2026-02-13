@@ -1,18 +1,23 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class DBConnection {
 
-    public static Connection getConnection() {
+    private static final String URL =
+            "jdbc:mysql://localhost:3306/smart_student_management";
+    private static final String USER = "root";
+    private static final String PASSWORD = "1234567890"; // put your mysql password
+
+    public static Connection getConnection() throws SQLException {
+
         try {
-            return DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/smart_student_management",
-                    "root",
-                    ""
-            );
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.out.println("MySQL JDBC Driver not found.");
+            throw new RuntimeException(e);
         }
+
+        return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 }
