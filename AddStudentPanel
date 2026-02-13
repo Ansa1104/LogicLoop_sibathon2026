@@ -1,0 +1,55 @@
+import javax.swing.*;
+import java.awt.*;
+import java.sql.*;
+
+ class AddStudentPanel extends JPanel {
+
+    JTextField nameField, emailField, phoneField, courseField;
+
+    public AddStudentPanel(){
+
+        setLayout(new GridLayout(6,2,10,10));
+        setBorder(BorderFactory.createEmptyBorder(50,100,50,100));
+
+        add(new JLabel("Name:"));
+        nameField = new JTextField();
+        add(nameField);
+
+        add(new JLabel("Email:"));
+        emailField = new JTextField();
+        add(emailField);
+
+        add(new JLabel("Phone:"));
+        phoneField = new JTextField();
+        add(phoneField);
+
+        add(new JLabel("Course:"));
+        courseField = new JTextField();
+        add(courseField);
+
+        JButton addBtn = new JButton("Add Student");
+        add(addBtn);
+
+        addBtn.addActionListener(e -> addStudent());
+    }
+
+    void addStudent(){
+        try{
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement(
+                    "INSERT INTO students(name,email,phone,course) VALUES(?,?,?,?)"
+            );
+
+            ps.setString(1,nameField.getText());
+            ps.setString(2,emailField.getText());
+            ps.setString(3,phoneField.getText());
+            ps.setString(4,courseField.getText());
+
+            ps.executeUpdate();
+
+            JOptionPane.showMessageDialog(this,"Student Added!");
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
+}
