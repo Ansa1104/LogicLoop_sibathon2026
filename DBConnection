@@ -7,7 +7,7 @@ public class DBConnection {
     private static final String URL =
             "jdbc:mysql://localhost:3306/smart_student_management";
     private static final String USER = "root";
-    private static final String PASSWORD = "1234567890"; // put your mysql password
+    private static final String PASSWORD = "1234567890"; 
 
     public static Connection getConnection() throws SQLException {
 
