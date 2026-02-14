@@ -1,18 +1,7 @@
 import javax.swing.*;
 import java.sql.*;
-<<<<<<< Updated upstream
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
- class Marks extends JFrame {
-=======
-class Student extends JFrame {
->>>>>>> 4e241991920506d666a7cbcf6130e8dcde99b75c
-=======
 public class Marks extends JFrame {
->>>>>>> 0c1e4aecfc2e92112b789300911c92e0a94e7d99
 
     JTextField studentIdField, subjectField, marksField, gradeField;
 
